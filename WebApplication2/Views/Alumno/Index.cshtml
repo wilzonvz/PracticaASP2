@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApplication2.Models.Alumno>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Nombre del alumno
+        </th>
+        <th>
+            Pensión asignada
+        </th>
+        <th>
+            Fecha de nacimiento
+        </th>
+        <th>
+            Activo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @item.Pension.ToString("C2")
+        </td>
+        <td>
+            @item.FechaNacimiento.ToString("d")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Codigo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo })
+        </td>
+    </tr>
+}
+
+</table>
